@@ -3,7 +3,7 @@ const moment = require('moment');
 
 const CreateBooking = async (req, res) => {
   try {
-    const { department, bookingPerson, startTime, endTime, date, cabin,discription } = req.body;
+    const { department, bookingPerson, startTime, endTime, date, cabin,description } = req.body;
 
     // Check if there are any existing bookings for the same date and overlapping time and cabin
     const existingBookings = await BookingData.find({
@@ -38,7 +38,7 @@ const CreateBooking = async (req, res) => {
       });
     }
 
-    const payload = { department, bookingPerson, startTime, endTime, date, cabin,discription };
+    const payload = { department, bookingPerson, startTime, endTime, date, cabin,description };
     const Booking = await BookingData.create(payload);
 
     res.status(200).json({ message: "Meeting Room Booked Successfully" });
